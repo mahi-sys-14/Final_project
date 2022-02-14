@@ -19,7 +19,7 @@ void main()
 
 	while(i != n)
 	{
-		printf("str[%d]: %c\t str[%d]: %c\n",i,str[i], i+1, str[i+1]);
+		//printf("str[%d]: %c\t str[%d]: %c\n",i,str[i], i+1, str[i+1]);
 		if(str[i] != str[i+1])
 		{
 			push(output, &top, i, str, n);
@@ -44,7 +44,6 @@ void main()
 		else
 		{
 			printf("%c",output[i]);
-
 		}
 	}
 
@@ -61,7 +60,7 @@ int push(char s[], int *t, int i, char str[], int length)
 	else
 	{
 		*t = *t+1;
-		printf("top = %d str=%c\n",*t,str[i]);
+		//printf("top = %d str=%c\n",*t,str[i]);
 		s[*t] = str[i];
 		return 1;
 	}

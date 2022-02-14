@@ -39,14 +39,14 @@ void main()
 	}while(!feof(fp));
 
 	rewind(fp);
-
+/*
 	for(int j=0; j<i; j++)
 	{
 		printf("child: %s\t",f[j].child);
 		printf("father: %s\n",f[j].father);
 	}
 
-/*
+
 	while(fgets(str, 10, fp) != NULL)
 	{
 		if(strcmp(str, input) == 0)
