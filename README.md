@@ -3,7 +3,8 @@ C programming final project
 
 This repositories contain code for 3 program definations of Set_B
 
-##1. String Reduction
+## 1. String Reduction
+
 John has a string, s consisting of n lowercase English alphabetic letters. In one operation, he can
 delete any pair of adjacent letters with same value. For example, string “aabcc” would become
 either “aab” or “bcc” after operation.
@@ -44,7 +45,8 @@ baab → bb
 bb → Empty String
 Thus, we print Empty String.
 
-##2. Finding number of grandchildren for given input string
+## 2. Finding number of grandchildren for given input string
+
 Given a file containing strings separated by space, where the first string is “child” and second
 string is “Father”.
 Write a program which finds number of grandchildren for any given string.
@@ -58,7 +60,8 @@ mike wayne
 Input : ronaldo
 Output:2
 
-##3. Reverse bits order for given integer number.
+## 3. Reverse bits order for given integer number.
+
 Write a program that reverses the order of the bits in an unsigned int value. The program should
 input the value from the user and call function reverseBits to print the bits in reverse order. Print the
 value in bits both before and after the bits are reversed to confirm that the bits are reversed properly.
