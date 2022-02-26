@@ -1,6 +1,6 @@
 # Final_project
 
-##C programming final project 
+## C programming final project 
 
 This repositories contain code for 3 program definations of Set_B
 
@@ -63,7 +63,7 @@ Write a program that reverses the order of the bits in an unsigned int value. Th
 Input: 8
 Output: Before:1000 After:0001
 
-##Linux Fundamentals group project
+## Linux Fundamentals group project
 
 ### Problem Statement:
 SCRIPT : Write a script that copies a list of files from one directory to the other. During copying the script should make the following changes to the files : capitalize the first letter of the filename and lower case all other letters. Change the owner of the files to a given owner and change the permissions to a given set of permissions.
