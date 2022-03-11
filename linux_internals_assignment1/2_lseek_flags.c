@@ -22,7 +22,7 @@ int main()
 	close(fd1);
 
 	int length=0;
-	char buffer[]="Here I am using the concept of lseek and it's flags: SEEK_SET, SEEK_CUR, SEEK_END";
+	char buffer[]="Here I am using the concept of lseek and it's flags: SEEK_SET, SEEK_CUR, SEEK_END\n";
 	int curr=0;
 
 	curr = lseek(fd1, 0, SEEK_CUR);
