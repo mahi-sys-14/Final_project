@@ -1,0 +1,4 @@
+Hello, this is child_file.txt
+Welcome
+In this program we have to make parent process wait untill ,while child process open a file and read file data into empty buffer
+Data is successfully read from the file.
