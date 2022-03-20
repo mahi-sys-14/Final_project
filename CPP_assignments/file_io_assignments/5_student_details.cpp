@@ -68,11 +68,31 @@ class student
 
 			if(id_no == su.id)
 			{
-				cout << "\nWhen id number macthes" << endl;
+//				cout << "\nWhen id number macthes" << endl;
 				cout << "Id number: " << su.id << endl;
 				cout << "Name: " << su.name << endl;
 				cout << "Branch: " << su.branch << endl;
 				cout << "Location: " << su.location << endl;
+
+				break;
+			}
+			else
+			{
+				try
+				{
+					if(i == count-2)
+					{
+						throw id_no;
+					}
+					else
+					{
+						continue;
+					}
+				}
+				catch(int n)
+				{
+					cout << "EXCEPTION: id not found" << endl;
+				}
 			}
 		}
 	}
@@ -120,9 +140,10 @@ int main()
 	while(choice != 0)
 	{
 		// menu driven program to enter student details and find student by their id
-		cout << "Enter your choice" << endl << "1: enter student detail" << endl << "2: find student" << endl << "3: Display Student Details " << endl;
+		cout << "\nEnter your choice" << endl << "1: enter student detail" << endl << "2: find student" << endl << "3: Display Student Details " << endl;
 		cout <<"4: Exit" << endl;
 		cin >> choice;
+		cout << endl;
 
 		switch(choice)
 		{
