@@ -1,5 +1,6 @@
 #include<iostream>
 #include<fstream>
+#include<exception>
 
 using namespace std;
 
@@ -31,7 +32,21 @@ class student
 		fstream fin;
 		student su;
 
-		fin.open("student_data.txt", ios::app|ios::binary);
+		try
+		{
+			fin.open("student_data.txt", ios::app|ios::binary);
+			if(!fin)
+			{
+				//cout << "Can't open the file" << endl;
+				throw 'e';
+			}
+		}
+		catch(char c)
+		{
+			cout << "Exception: File is not created" << endl;
+		}
+	
+
 		su.getdata();
 
 		fin.write((char *) &su, sizeof(su));
@@ -49,7 +64,18 @@ class student
 		cout << "Enter the student id" << endl;
 		cin >> id_no;
 
-		fin.open("student_data.txt", ios::in|ios::binary);
+		try
+		{
+			fin.open("student_data.txt", ios::in|ios::binary);
+			if(!fin)
+			{
+				throw 'e';
+			}
+		}
+		catch(char c)
+		{
+			cout << "Exception: File is not created" << endl;
+		}
 
 		while(!fin.eof())
 		{
