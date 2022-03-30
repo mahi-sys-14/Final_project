@@ -1,3 +1,26 @@
+/***************************************************************
+ *
+ Create a base class ‘myList’
+ * Constructor should initialize an empty node
+ * InsertBeg(): add the new node at the beginning of the list
+ * DeleteLast(): delete the last node
+ * SwaapTwo(): swap the first node with the last node
+ * ReverseList(): ‘friend’ : reverse the list
+ Create a derived class InsertList:
+ * InsertEnd(): add the new node at the end of the list
+ * InsertAt(): insert the node at the given index
+ * Inser2postt(): insert the node two nodes after the given index
+ Create a derived class DeleteList:
+ * Delete(): delete the first node
+ * Delete(): delete the node at given index
+ DeleteButOne(): delete the last but one node
+ * Create a derived class Manipulate:
+ * Swap(): swap the nodes at given indices
+ * reOrder(): Bring a given node at the start of the list
+ *
+ * ***********************************************************/
+
+
 #include<iostream>
 #include<list>
 #include<cstring>
