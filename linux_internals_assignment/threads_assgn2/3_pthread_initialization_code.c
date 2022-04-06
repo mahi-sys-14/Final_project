@@ -18,10 +18,10 @@ void my_once()
 
 void *thread_task(void *args)
 {
-	printf("In thread %d\n",(int *)args);
+	printf("In thread %ld\n",(int *)args);
 	pthread_once(&once_code , (void *)my_once);
 
-	printf("Exiting thread %d\n", (int *)args);
+	printf("Exiting thread %ld\n", (int *)args);
 
 	return NULL;
 }
