@@ -16,7 +16,7 @@ int main()
 	struct sockaddr_in servaddr, clientaddr;
 	socklen_t clilen;
 
-	sockfd = socket(AF_INET, SOCK_DGRAM, 0);
+	sockfd = socket(AF_INET, SOCK_STREAM, 0);
 	if(sockfd < 0)
 	{
 		perror("socket: ");
@@ -37,39 +37,47 @@ int main()
 
 	listen(sockfd, 5);
 
-	accfd = accept(sockfd, (struct sockaddr *) &clientaddr, &clilen);
-	if(accfd < 0)
-	{
-		perror("accept: ");
-		exit(3);
-	}
-	printf("Client connected\n");
-
 	while(1)
 	{
-		char buff[100];
-		int n;
 
-		n = recv(accfd, buff, sizeof(buff), 0);
-		if(n < 0)
+	printf("Server Waiting for client connection\n");
+	clilen = sizeof(clientaddr);
+	accfd = accept(sockfd, (struct sockaddr *) &clientaddr, &clilen);
+	printf("Client connected\n");
+
+		while(1)
 		{
-			perror("recv: ");
-			exit(4);
-		}
-		printf("Rev'd data from client : %s\n", buff);
+			char buff[100];
+			int n;	
+			
+			printf("........Server before recv.....\n");
+			memset(buff, 0, sizeof(buff));
 
-		for(int i=0; i<n; i++)
-		{
-			if(buff[i] >= 'a' && buff[i] <= 'z')
-				buff[i] -= 32;
-			else 
-				buff[i] += 32;
-		}
+			n = recv(accfd, buff, sizeof(buff), 0);
+//			printf("Rev'd data from client : %s\n", buff);
+			if(n == 0)
+			{
+				perror("recv: ");
+				close(accfd);
+				exit(4);
+			}
+			printf("Rev'd data from client : %s\n", buff);
 
-		send(accfd, buff, strlen(buff), 0);
-		printf("Data sended to client\n");
-	}	
+			for(int i=0; i<=n; i++)
+			{
+//				printf("%c\n",buff[i]);
+				if(buff[i] >= 'a' && buff[i] <= 'z')
+					buff[i] -= 32;
+				else 
+					buff[i] += 32;
+			}
 
+//			printf("data after toggling : %s\n", buff);
+
+			send(accfd, buff, strlen(buff), 0);
+			printf("***********Data sended to client**************\n\n");
+		}	
+	}
 	close(sockfd);
 	return 0;
 }

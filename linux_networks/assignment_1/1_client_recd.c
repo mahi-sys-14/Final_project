@@ -15,7 +15,7 @@ int main()
 
 	struct sockaddr_in servaddr;
 
-	sockfd = socket(AF_INET, SOCK_DGRAM, 0);
+	sockfd = socket(AF_INET, SOCK_STREAM, 0);
 	if(sockfd < 0)
 	{
 		perror("socket: ");
@@ -27,19 +27,30 @@ int main()
 	servaddr.sin_addr.s_addr = inet_addr("127.0.0.1");
 	servaddr.sin_port = htons(PORT);
 
-	connect(sockfd, (struct sockaddr *) &servaddr, sizeof(servaddr));
-	printf("Client connecting to server.............\n");
+//	inet_pton(AF_INET, serv_ip, &servaddr.sin_addr);
+
+	retval = connect(sockfd, (struct sockaddr *) &servaddr, sizeof(servaddr));
+	if(retval < 0)
+	{
+		perror("connect: ");
+		exit(2);
+	}
+	printf(".............Client connecting to server.............\n");
 
 	while(1)
 	{
 		char buff[100];
 		int n;
-
-		printf("Enter message to send to server: \n");
+		
+		//getchar();
+		memset(buff, 0, sizeof(buff));
+		printf("\nEnter message to send to server: \n");
 		gets(buff);
+
+	//	printf("String entered to send to client: %s\n",buff);
 	
 		send(sockfd, buff, strlen(buff), 0);
-		printf("Data sended to server\n");
+//		printf("Data sended to server\n");
 
 		n = recv(sockfd, buff, sizeof(buff), 0);
 		if(n < 0)
