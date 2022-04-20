@@ -14,8 +14,9 @@ int main()
 	int sockfd, retval;
 
 	struct sockaddr_in servaddr;
+	socklen_t addr_len;
 
-	sockfd = socket(AF_INET, SOCK_STREAM, 0);
+	sockfd = socket(AF_INET, SOCK_DGRAM, 0);
 	if(sockfd < 0)
 	{
 		perror("socket: ");
@@ -27,18 +28,21 @@ int main()
 	servaddr.sin_addr.s_addr = inet_addr("127.0.0.1");
 	servaddr.sin_port = htons(PORT);
 
-//	inet_pton(AF_INET, serv_ip, &servaddr.sin_addr);
+	addr_len = sizeof(struct sockaddr_in);
+//	addr_len = sizeof(servaddr);
 
+//	inet_pton(AF_INET, serv_ip, &servaddr.sin_addr);
+/*
 	retval = connect(sockfd, (struct sockaddr *) &servaddr, sizeof(servaddr));
 	if(retval < 0)
 	{
 		perror("connect: ");
 		exit(2);
 	}
-	printf(".............Client connecting to server.............\n");
+*/	printf(".............Client connecting to server.............\n");
 
-	while(1)
-	{
+//	while(1)
+//	{
 		char buff[100];
 		int n;
 		
@@ -47,19 +51,20 @@ int main()
 		printf("\nEnter message to send to server: \n");
 		gets(buff);
 
-	//	printf("String entered to send to client: %s\n",buff);
+		printf("String entered to send to client: %s\n",buff);
 	
-		send(sockfd, buff, strlen(buff), 0);
-//		printf("Data sended to server\n");
+		n = sendto(sockfd, buff, strlen(buff), 0, (struct sockaddr *) &servaddr, addr_len);
+		printf("Data sended to server n: %d\n",n);
 
-		n = recv(sockfd, buff, sizeof(buff), 0);
+		printf("\nWaiting for server data.........\n");
+		n = recvfrom(sockfd, buff, sizeof(buff), 0 , (struct sockaddr *) &servaddr, &addr_len);
 		if(n < 0)
 		{
 			perror("recv: ");
 			exit(4);
 		}
-		printf("Rev'd data from server : %s\n", buff);		
-	}	
+		printf("Rev'd data from server : %s\tof bytes: %d\n", buff, n);		
+//	}	
 
 	close(sockfd);
 	return 0;
