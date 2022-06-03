@@ -20,6 +20,12 @@ int main()
 {
 	int shmid;
 	char *p;
+	char *addr;
+
+	printf("Enter the address at which you need to allocate shared memory in user space\n");
+	scanf("%lx",addr);
+
+	printf("Desired address is: %lx\n",addr);
 
 	shmid = shmget(KEY, 250, IPC_CREAT|0644);
 	if(shmid < 0)
@@ -29,7 +35,7 @@ int main()
 	}
 	printf("Shared memory id: %d\n",shmid);
 
-	p = shmat(shmid, 0, 0);
+	p = shmat(shmid, addr, 0);
 
 	printf("Address at which shared memory start is: %p\n",p);
 	printf("Data is: %s\n",p);

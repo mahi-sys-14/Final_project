@@ -35,13 +35,13 @@ int main()
 	{
 		printf("No red ball can be left alone in a bag violates\n");
 		printf("Ways: %d\n",ways);
-		return -1;
+		return 0;
 	}
 	else if(w + r/2 < b)
 	{
 		printf("No bags should be empty violates\n");
 		printf("Ways: %d\n",ways);
-		return -1;
+		return 0;
 	}
 	else
 	{
@@ -49,7 +49,7 @@ int main()
 		printf("Ways: %d\n",ways);
 	}
 
-	printf("Exiting main code\n");
+//	printf("Exiting main code\n");
 
 	return 0;
 }
@@ -72,6 +72,6 @@ int fact(int f)
 		temp--;
 	}
 
-	printf("factorial of %d: %d\n",f, fa);
+//	printf("factorial of %d: %d\n",f, fa);
 	return fa;	
 }
